@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+Welcome to Cheng's corner of sharing. Some of the learnings documented here have been gleaned from my experiences in building and operating large-scale cloud storage systems at Microsoft Azure.
