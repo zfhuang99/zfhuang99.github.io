@@ -1,0 +1,42 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize";
+
+#toc {
+    position: fixed;
+    top: 108px; /* Adjust as needed */
+    left: 108px; /* Adjust as needed */
+    width: 224px; /* Adjust as needed */
+    height: calc(100% - 40px);
+    overflow-y: auto; /* This makes the ToC scrollable if it's too long */
+}
+
+@media screen and (max-width: 1440px) {
+    #toc {
+        position: relative; /* Change to relative position */
+		top: 0px; /* Adjust as needed */
+		left: 16px; /* Adjust as needed */
+        display: block; /* Change to block, or whatever suits your layout */
+        width: 100%; /* Take up full width */
+        height: auto; /* Let the height be automatic */
+    }
+}
+
+li.toc-indent {
+	// margin-left: 8px;  /* Adjust as needed */
+    // padding-left: 10px;  /* Adjust as needed */
+}
+
+li.toc-indent-more {
+	margin-left: 32px;  /* Adjust as needed */
+    // padding-left: 20px;  /* Adjust as needed */
+}
+
+.post {
+    // padding-left: 25px; /* The width of the ToC plus a little extra for spacing */
+}
+
