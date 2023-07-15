@@ -16,9 +16,14 @@ The experience left me profoundly convinced of the transformative potential that
 
 Moreover, this expedition offered an insight into the probable future of AI-assisted programming. With the support of AI, developers' productivity could reach new heights, enabling the generation of significantly larger volumes of code. However, it's essential to bear in mind that AI-generated code is not inherently bug-free. To ensure the robustness of our software infrastructure in the face of an influx of new code, a proactive approach is needed. Rust, with its prowess in minimizing low-level bugs, is a formidable tool for this task. To navigate the realm of high-level bugs, we must rely on formal methods like TLA+ and other formal verification techniques.
 
+### Why Paxos
+
+Paxos is one of the most fundamental protocols anchoring many distributed systems. A simple implementation of Paxos might involve two proposers each trying to commit their own value among three acceptors. This process involves concurrency, as the requests from the proposers may compete with each other at any of the acceptors in an arbitrary sequence. Furthermore, the process involves asynchrony. When a proposer sends requests to the acceptors, the responses might return in any order or not at all, in the event of network issues. Implementing Paxos provides an opportunity to thoroughly comprehend both the concurrency and asynchrony aspects of Rust, making it an appealing choice for my inaugural project.
+
+
 ## Highlights of ChatGPT
 
-The comprehensive ChatGPT session, featuring numerous interactions and problem-solving discussions around compiler errors, is documented and accessible for those interested. To offer a snapshot of the expansive spectrum of assistance provided by ChatGPT, I've compiled a few standout moments below.
+The comprehensive ChatGPT session, including numerous interactions around compiler errors, is accessible for those interested. To offer a snapshot of the expansive spectrum of assistance provided by ChatGPT, I've compiled a few standout moments below.
 
 ### Getting started
 
