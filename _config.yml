@@ -12,6 +12,8 @@ plugins:
 markdown: kramdown
 kramdown:
   auto_ids: true
+  footnote_nr: 1
+  enable_footnote_links: true  
 
 # Theme-specific settings
 

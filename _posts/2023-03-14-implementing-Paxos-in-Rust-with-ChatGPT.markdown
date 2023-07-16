@@ -10,9 +10,9 @@ This article provides an overview of my experience implementing Paxos in Rust, a
 
 The dynamism of this interaction led to a noticeable surge in my productivity, enabling me to complete a substantial amount of work in a rather condensed timeframe. Impressively, the entire project was wrapped up in less than a week, with roughly 2-3 hours invested on weekdays and an additional half-day over the weekend.
 
-I would be remiss not to mention that this was my ==inaugural== Rust project. Despite having a basic grasp of the language from prior resources like "Rust by Example" and the completion of "rustlings"—a compilation of 94 mini assignments designed to introduce Rust concepts—this project truly underscored the remarkable capabilities of ChatGPT in alleviating Rust's infamously steep learning curve.
+I would be remiss not to mention that this was my *inaugural* Rust project. Despite having a basic grasp of the language from prior resources like "Rust by Example" and the completion of "rustlings"—a compilation of 94 mini assignments designed to introduce Rust concepts—this project truly underscored the remarkable capabilities of ChatGPT in alleviating Rust's infamously steep learning curve.
 
-The experience left me profoundly convinced of the transformative potential that the synergy of Rust and ChatGPT holds for the field of ==infrastructure software development==. Rust's unique ability to deliver code devoid of memory leaks, crashes, and race conditions ensures a robust and efficient software infrastructure. Coupling this with the problem-solving prowess of ChatGPT can help us navigate the more intimidating facets of Rust, including its compiler errors and learning curve.
+The experience left me profoundly convinced of the transformative potential that the synergy of Rust and ChatGPT holds for the field of *infrastructure software development*. Rust's unique ability to deliver code devoid of memory leaks, crashes, and race conditions ensures a robust and efficient software infrastructure. Coupling this with the problem-solving prowess of ChatGPT can help us navigate the more intimidating facets of Rust, including its compiler errors and learning curve.
 
 Moreover, this expedition offered an insight into the probable future of AI-assisted programming. With the support of AI, developers' productivity could reach new heights, enabling the generation of significantly larger volumes of code. However, it's essential to bear in mind that AI-generated code is not inherently bug-free. To ensure the robustness of our software infrastructure in the face of an influx of new code, a proactive approach is needed. Rust, with its prowess in minimizing low-level bugs, is a formidable tool for this task. To navigate the realm of high-level bugs, we must rely on formal methods like TLA+ and other formal verification techniques.
 
@@ -23,7 +23,7 @@ Paxos is one of the most fundamental protocols anchoring many distributed system
 
 ## Highlights of ChatGPT
 
-The comprehensive ChatGPT session, including numerous interactions around compiler errors, is accessible for those interested. To offer a snapshot of the expansive spectrum of assistance provided by ChatGPT, I've compiled a few standout moments below.
+The comprehensive ChatGPT session, including numerous interactions around compiler errors, is accessible [[1]] for those interested. To offer a snapshot of the expansive spectrum of assistance provided by ChatGPT, I've compiled a few standout moments below.
 
 ### Getting started
 
@@ -67,7 +67,7 @@ By this stage, I had successfully implemented Paxos Phase 1 and Phase 2. Adherin
 
 ### Model checking
 
-When AWS unveiled their ShardStore paper [1] at SOSP, the authors open-sourced a model checking framework for Rust, named Shuttle. Having never explored Shuttle before and having little interest in poring over its documentation, I decided to task ChatGPT with explaining its workings. With just a few prompts, I quickly grasped the essence of the framework and understood how I could potentially incorporate it into my own testing regime—a task for another day.
+When AWS unveiled their ShardStore paper [[2]] at SOSP, the authors open-sourced a model checking framework for Rust, named Shuttle. Having never explored Shuttle before and having little interest in poring over its documentation, I decided to task ChatGPT with explaining its workings. With just a few prompts, I quickly grasped the essence of the framework and understood how I could potentially incorporate it into my own testing regime—a task for another day.
 
 ![model_checking](/assets/images/rkvpaxos_model_checking_dark.jpeg){:width="90%"}
 
@@ -75,7 +75,7 @@ When AWS unveiled their ShardStore paper [1] at SOSP, the authors open-sourced a
 
 This journey has deeply convinced me of the imminent rise of Rust as a dominating force in infrastructure software development, potentially surpassing C++.
 
-As more developers begin to embrace AI assistance, a tremendous increase in productivity is predicted, facilitating the generation of much larger volumes of code. However, it's crucial to note that AI-generated code isn't exempt from bugs. A recent study [2] revealed that "participants who had access to an AI assistant wrote significantly less secure code" and "were more likely to believe they wrote secure code." While this study centered around security, it's reasonable to infer that its conclusions could be applicable to other areas such as availability and reliability.
+As more developers begin to embrace AI assistance, a tremendous increase in productivity is predicted, facilitating the generation of much larger volumes of code. However, it's crucial to note that AI-generated code isn't exempt from bugs. A recent study [[3]] revealed that "participants who had access to an AI assistant wrote significantly less secure code" and "were more likely to believe they wrote secure code." While this study centered around security, it's reasonable to infer that its conclusions could be applicable to other areas such as availability and reliability.
 
 In the wake of this anticipated surge in productivity, the need to maintain high reliability within our infrastructure software stack is of utmost importance. The escalating demand for stability is likely to elevate Rust as the most desirable choice. This is largely due to Rust's proficiency in mitigating low-level bugs such as memory leaks, crashes, and race conditions.
 
@@ -83,8 +83,11 @@ However, Rust alone can't guarantee high-level correctness, such as ensuring saf
 
 As AI-assisted programming becomes the norm, every developer's AI co-pilot will become standardized, making them largely interchangeable. Therefore, the ability to tackle high-level correctness issues effectively will emerge as a key differentiator. This skill will be instrumental in maintaining the relevance of human developers in the rapidly evolving landscape of infrastructure software development.
 
-## References
 
-[1] [Using lightweight formal methods to validate a key-value storage node in Amazon S3](https://www.amazon.science/publications/using-lightweight-formal-methods-to-validate-a-key-value-storage-node-in-amazon-s3)
 
-[2] [Do Users Write More Insecure Code with AI Assistants?](https://arxiv.org/abs/2211.03622)
+
+[1]: https://chat.openai.com/share/263d8cb4-0001-46de-bbea-d2a07de60f9c
+
+[2]: https://www.amazon.science/publications/using-lightweight-formal-methods-to-validate-a-key-value-storage-node-in-amazon-s3
+
+[3]: https://arxiv.org/abs/2211.03622
