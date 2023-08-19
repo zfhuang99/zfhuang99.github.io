@@ -31,7 +31,8 @@ Here is the initial prompt! Although ChatGPT's comprehensive knowledge of Paxos 
 
 This also implies that, to maximize the potential of Large Language Models like ChatGPT, we should try to translate the problems we're tackling into concepts that are familiar and easily understood.
 
-![getting_started](/assets/images/rkvpaxos_getting_started_dark.jpeg){:width="90%"}
+<!-- ![getting_started](/assets/images/rkvpaxos_getting_started_dark_v0.jpeg){:width="90%"} -->
+![getting_started](/assets/images/rkvpaxos_getting_started_dark.jpg){:width="90%"}
 
 ### Define data structure
 
