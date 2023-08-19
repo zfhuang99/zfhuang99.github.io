@@ -40,15 +40,15 @@ Formal methods can be visualized across four quadrants in a two-dimensional spac
 
 Example: Take Coyote [[2]], originally developed at Microsoft Research and now open-sourced. In traditional testing, executing a test case 100 times yields roughly identical results each time. With Coyote, each execution explores different task interleavings, thanks to its control over asynchronous task scheduling. As a result, invariant violations surface more quickly, and when detected, Coyote captures a trace, allowing for deterministic replay and debugging.
 
-- Model Checking on Abstract Specification (top-left quadrant):
+- Model checking on abstract specification (top-left quadrant):
 
 Example: Consider TLA+ [[1]], a specification language. Real-world systems contain myriad details, many of which are non-essential to verifying correctness. By abstracting core logic and eliminating extraneous details, specifications in TLA+ focus solely on crucial behaviors. Model checking these specifications explores all defined interleavings, capturing and replaying traces whenever an invariant is violated.
 
-- Formal Verification on Abstract Specification (bottom-feft quadrant):
+- Formal verification on abstract specification (bottom-feft quadrant):
 
 Example: Instead of verifying through exhaustive exploration, formal verification offers mathematical proof of correctness. For instance, using the IVy language [[3]], one can abstract essential distributed system logic, write specifications, and then mathematically prove their correctness using the IVy toolchain.
 
-- Formal Verification on Real Implementation (bottom-right quadrant):
+- Formal verification on real implementation (bottom-right quadrant):
 
 Example: Verus [[4]] is a pioneering open-source project marrying formal verification with real-world implementation in the Rust language. It exemplifies the potential of integrating rigorous mathematical proofs with tangible, working code.
 

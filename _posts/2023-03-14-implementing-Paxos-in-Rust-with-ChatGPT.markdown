@@ -10,7 +10,7 @@ This article provides an overview of my experience implementing Paxos in Rust, a
 
 The dynamism of this interaction led to a noticeable surge in my productivity, enabling me to complete a substantial amount of work in a rather condensed timeframe. Impressively, the entire project was wrapped up in less than a week, with roughly 2-3 hours invested on weekdays and an additional half-day over the weekend.
 
-I would be remiss not to mention that this was my *inaugural* Rust project. Despite having a basic grasp of the language from prior resources like "Rust by Example" and the completion of "rustlings"—a compilation of 94 mini assignments designed to introduce Rust concepts—this project truly underscored the remarkable capabilities of ChatGPT in alleviating Rust's infamously steep learning curve.
+I would be remiss not to mention that this was my *inaugural* Rust project. Despite having a basic grasp of the language from prior resources like "Rust by Example" and the completion of "rustlings" — a compilation of 94 mini assignments designed to introduce Rust concepts — this project truly underscored the remarkable capabilities of ChatGPT in alleviating Rust's infamously steep learning curve.
 
 The experience left me profoundly convinced of the transformative potential that the synergy of Rust and ChatGPT holds for the field of *infrastructure software development*. Rust's unique ability to deliver code devoid of memory leaks, crashes, and race conditions ensures a robust and efficient software infrastructure. Coupling this with the problem-solving prowess of ChatGPT can help us navigate the more intimidating facets of Rust, including its compiler errors and learning curve.
 
@@ -54,7 +54,7 @@ Here are a few examples of me asking ChatGPT to define some basic data structure
 
 ### Revamp implementation
 
-My interaction with ChatGPT led me to realize that 'channels' might be a powerful primitive for implementing Paxos. Specifically, consider a scenario where a proposer sends a voting request to three acceptors. As soon as it receives responses from at least two of the three, it can conclude a voting round. This can be implemented elegantly using channels—the proposer simply listens on a channel, with each individual response from different acceptors delivered via the same channel. This way, the proposer can implement a straightforward loop and tally the responses, sidestepping the need for complex concurrency primitives. With this insight, I requested ChatGPT to revamp the implementation.
+My interaction with ChatGPT led me to realize that 'channels' might be a powerful primitive for implementing Paxos. Specifically, consider a scenario where a proposer sends a voting request to three acceptors. As soon as it receives responses from at least two of the three, it can conclude a voting round. This can be implemented elegantly using channels — the proposer simply listens on a channel, with each individual response from different acceptors delivered via the same channel. This way, the proposer can implement a straightforward loop and tally the responses, sidestepping the need for complex concurrency primitives. With this insight, I requested ChatGPT to revamp the implementation.
 
 Given that most of my time was spent prompting and editing, this request for a significant rewrite didn't feel particularly taxing.
 
@@ -68,7 +68,7 @@ By this stage, I had successfully implemented Paxos Phase 1 and Phase 2. Adherin
 
 ### Model checking
 
-When AWS unveiled their ShardStore paper [[2]] at SOSP, the authors open-sourced a model checking framework for Rust, named Shuttle. Having never explored Shuttle before and having little interest in poring over its documentation, I decided to task ChatGPT with explaining its workings. With just a few prompts, I quickly grasped the essence of the framework and understood how I could potentially incorporate it into my own testing regime—a task for another day.
+When AWS unveiled their ShardStore paper [[2]] at SOSP, the authors open-sourced a model checking framework for Rust, named Shuttle. Having never explored Shuttle before and having little interest in poring over its documentation, I decided to task ChatGPT with explaining its workings. With just a few prompts, I quickly grasped the essence of the framework and understood how I could potentially incorporate it into my own testing regime — a task for another day.
 
 ![model_checking](/assets/images/rkvpaxos_model_checking_dark.jpeg){:width="90%"}
 
