@@ -94,7 +94,7 @@ The protocol must ensure that only one value is decided upon. In other words, tw
 Take a moment to consider this setup. A node, if it hasn’t previously voted, can vote for any value. Once a value receives votes from two nodes, that value is deemed "decided". The core safety aspect we're ensuring is that only one value reaches this "decided" status.
 
 **IVy specification**
-- Apart from nodes and values, we have two quorums, `q_1` and `q_2`. The `quorum_intersect` axiom ensures that these quorums always have at least one node in common.
+- Apart from nodes and values, our specification includes two quorums, `q_1` and `q_2`. The axioms `quorum_q1` and `quorum_q2` provide the simplest possible definitions for these quorums (e.g., `q_1` consists of two nodes `n_1` and `n_2`), which we'll elaborate on later.
 - We employ several relations, which are boolean-returning functions. For those versed in Prolog, these relations should feel familiar. Capitalized variables act as wildcards, matching any instance, whereas lowercase ones pinpoint specific instances. For instance, `vote(N, V)` indicates voting status for any node-value pairing, while `vote(n, v)` refers to a specific node-value combination.
 - The initial state, `vote(N, V) := false`, signifies that no node has voted. Conversely, the statement `vote(n, v) := true` in the `case_vote` action indicates a chosen node (denoted as `n`) voting for a specific value (`v`).
 - The protocol delineates two actions:
@@ -107,7 +107,8 @@ type value = {v1, v2}
 type quorum = {q1, q2}
 
 relation member(N:node, Q:quorum)
-axiom [quorum_intersect] forall Q1:quorum, Q2:quorum. exists N:node. member(N, Q1) & member(N, Q2)
+axiom [quorum_q1] member(n1, q1) & member(n2, q1) & ~member(n3, q1)
+axiom [quorum_q2] member(n1, q2) & ~member(n2, q2) & member(n3, q2)
 
 relation vote(N:node, V:value)
 relation decision(V:value)
@@ -146,7 +147,7 @@ This is a pivotal moment in understanding inductive invariants. One might argue 
 From this counterexample, it's clear we must prevent `decision(v2) = true` when two nodes have voted for `v1`. To fortify our proof, we add an intermediate invariant ensuring that a decided value has the backing of a quorum:
 
 ```
-invariant decision(V) -> exists Q:quorum. forall N:node. member(N, Q) -> vote(N,V)
+invariant decision(V) -> exists Q:quorum. forall N:node. member(N, Q) -> vote(N, V)
 ```
 
 Yet, IVy rejects the proof again. The new counterexample retains the original state but adds both `vote(n1, v2) = true` and `vote(n2, v2) = true` because of the added invariant. 
@@ -158,6 +159,25 @@ invariant vote(N, V1) & vote(N, V2) -> V1 = V2
 ```
 
 With this addition, IVy accepts the invariants, collectively making them inductive. This confirms the safety of our target invariant under the given specification — no two values can simultaneously be decided. Crucially, the final invariant is local, pivotal for correctness, and can be continuously validated during runtime. We can envision each node maintaining a tally of its votes, with any node exceeding one vote indicating a potential breach of the invariant. This methodology extends to more intricate protocols, like Paxos, where individual nodes can also monitor local conditions to ensure system safety.
+
+## Simplification via Specificity
+
+One of the key hallmarks of "practical" formal verification lies in the art of simplification. Let's delve into how this is highlighted in our toy concensus specification.
+
+Firstly, we limit the scope to just 3 nodes and 2 values. This might seem restrictive, but it aligns perfectly with our primary objective: the discovery of all inductive invariants. Smaller specifications not only speed up the verification process but also yield counterexamples that are easier to interpret.
+
+Secondly, we use specific axioms to define our quorums. Instead of adopting a generic representation that demands overlapping nodes between any two quorums, we go for a more straightforward approach. This simplification doesn't compromise our ability to identify all the required inductive invariants.
+
+However, it's worth noting that these simplifications come with their trade-offs. For example, if we decide to extend the system to handle more nodes and values, we'll need to manually update the specification. This is generally a one-time effort to avoid unexpected surprises.
+
+Also, keep in mind that extending the specification can significantly increase the time required for verification. For instance, in a specification modeling the Paxos concensus protocol, when expanding the sets of Ballot IDs and values, the verification time shot up exponentially. To illustrate, allowing ballots to choose between 0 and 7, and values from a set of 3, took nearly 3 hours for verification. While it's possible to craft a more complex specification that verifies faster, it contradicts our aim in practical formal verification: simplicity is key, as long as it enables us to identify all inductive invariants.
+
+| Ballot ID   | Value          | Verification Time |
+| ----------- | -------------- | ----------------- | 
+| 0, 1, 2, 3  | {v1, v2}       | 4.5s              |
+| 0, 1, 2, 3  | {v1, v2, v3}   | 5.9s              |
+| 0, 1, ..., 7| {v1, v2}       | 6m27s             |
+| 0, 1, ..., 7| {v1, v2, v3}   | 171m26s           |
 
 ## Conclusion
 
