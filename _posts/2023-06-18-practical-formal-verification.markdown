@@ -142,7 +142,7 @@ invariant decision(V1) & decision(V2) -> V1 = V2
 
 IVy flags this invariant as non-inductive. The counterexample it provides begins with a state where `decision(v2) = true` and `decision(v1) = false`, with both `vote(n1, v1)` and `vote(n2, v1)` being true. This state is valid as it adheres to our invariant. However, executing the `decide` action would result in `decision(v1) = true`, violating the invariant since both `v1` and `v2` have now been decided.
 
-This is a pivotal moment in understanding inductive invariants. One might argue that the state of `decision(v2) = true` and both votes for `v1` isn't a realistic scenario. This is true, but the essence of inductive invariants lies in the fact that the initial state's reachability is irrelevant. As long as it fits the invariant, it's deemed valid. This counterexample, albeit adversarial, showcases IVy's robustness.
+This is a pivotal moment in understanding inductive invariants. One might argue that the state of `decision(v2) = true` and both votes for `v1` isn't a realistic scenario. This is true, but the essence of inductive invariants lies in the fact that the reachability of the beginning state is irrelevant. As long as it fits the invariant, it's deemed valid. This counterexample, albeit adversarial, showcases IVy's robustness.
 
 From this counterexample, it's clear we must prevent `decision(v2) = true` when two nodes have voted for `v1`. To fortify our proof, we add an intermediate invariant ensuring that a decided value has the backing of a quorum:
 
@@ -160,7 +160,7 @@ invariant vote(N, V1) & vote(N, V2) -> V1 = V2
 
 With this addition, IVy accepts the invariants, collectively making them inductive. This confirms the safety of our target invariant under the given specification — no two values can simultaneously be decided. Crucially, the final invariant is local, pivotal for correctness, and can be continuously validated during runtime. We can envision each node maintaining a tally of its votes, with any node exceeding one vote indicating a potential breach of the invariant. This methodology extends to more intricate protocols, like Paxos, where individual nodes can also monitor local conditions to ensure system safety.
 
-## Simplification via Specificity
+## Simplification via specificity
 
 One of the key hallmarks of "practical" formal verification lies in the art of simplification. Let's delve into how this is highlighted in our toy concensus specification.
 
