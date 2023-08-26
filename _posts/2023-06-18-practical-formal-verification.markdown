@@ -6,11 +6,11 @@ categories: [Formal verification, IVy]
 
 ## Introduction
 
-In an era where cloud systems scale at an unprecedented rate, striking the right balance between outage costs and preventive investments becomes paramount. This dynamic has spurred a growing interest in formal methods, encompassing both model checking tools, like TLA+ [[1]], and formal verification techniques.
+In a rapidly evolving tech landscape where cloud systems scale exponentially and AI-assisted programming [[0]] is on the horizon, mastering the art of balancing outage costs with preventive measures is more critical than ever. This pressing need has invigorated the exploration of formal methods, a domain that includes both model checking, exemplified by tools like TLA+ [[1]], and formal verification techniques.
 
-While model checking has found its way into practical engineering workflows, formal verification remains largely unexplored for cloud-scale distributed systems. 
+While model checking has found its way into practical engineering workflows, formal verification remains a largely untapped resource for ensuring the reliability of cloud-scale distributed systems. 
 
-In this post, we advocate for a pragmatic approach to formal verification, emphasizing its value as a complement to model checking. Drawing from our experiences of applying in Azure, we contend that this method could be the keystone to elevating the reliability of cloud-scale distributed systems.
+In this article, we advocate for a pragmatic approach to formal verification, emphasizing its value as a complement to model checking. Our thesis is straightforward: as AI-assisted programming becomes ubiquitous, the ability to rigorously reason about system correctness will be a key differentiator. Practical formal verification, we argue, could be the missing piece that takes the robustness of cloud-scale distributed systems to the next level.
 
 ## Outage: cost vs. prevention
 
@@ -181,7 +181,9 @@ Also, keep in mind that extending the specification can significantly increase t
 
 ## Conclusion
 
-In an imminent future, where AI-assisted programming takes center stage [[6]], the capability to reason and ascertain high-level system correctness will stand out as a pivotal differentiating skill. For those of us crafting the foundational layers of cloud-scale distributed infrastructure, it's imperative to not only familiarize ourselves with tools like TLA+ but to also become adept at practical formal verification. It isn't just about knowing the tools — it's about seamlessly integrating them into our everyday workflow, ensuring that the systems we build are robust and fail-proof.
+In an imminent future, where AI-assisted programming takes center stage [[0]], the capability to reason and ascertain high-level system correctness will stand out as a pivotal differentiating skill. For those of us crafting the foundational layers of cloud-scale distributed infrastructure, it's imperative to not only familiarize ourselves with tools like TLA+ but to also become adept at practical formal verification. It isn't just about knowing the tools — it's about seamlessly integrating them into our everyday workflow, ensuring that the systems we build are robust and fail-proof.
+
+[0]: https://zfhuang99.github.io/rust/chatgpt/2023/03/14/implementing-Paxos-in-Rust-with-ChatGPT.html#future-of-ai-assisted-programming
 
 [1]: https://lamport.azurewebsites.net/tla/tla.html
 
@@ -192,5 +194,3 @@ In an imminent future, where AI-assisted programming takes center stage [[6]], t
 [4]: https://github.com/verus-lang/verus
 
 [5]: https://dafny.org/dafny/
-
-[6]: https://zfhuang99.github.io/rust/chatgpt/2023/03/14/implementing-Paxos-in-Rust-with-ChatGPT.html#future-of-ai-assisted-programming
