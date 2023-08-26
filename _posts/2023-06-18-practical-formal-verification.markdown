@@ -6,9 +6,9 @@ categories: [Formal verification, IVy]
 
 ## Introduction
 
-In a rapidly evolving tech landscape where cloud systems scale exponentially and AI-assisted programming [[0]] is on the horizon, mastering the art of balancing outage costs with preventive measures is more critical than ever. This pressing need has invigorated the exploration of formal methods, a domain that includes both model checking, exemplified by tools like TLA+ [[1]], and formal verification techniques.
+In a rapidly evolving tech landscape where cloud systems scale exponentially and AI-assisted programming takes center stage [[1]], mastering the art of balancing outage costs with preventive measures is more critical than ever. This pressing need has invigorated the exploration of formal methods, a domain that includes both model checking, exemplified by tools like TLA+ [[2]], and formal verification techniques.
 
-While model checking has found its way into practical engineering workflows, formal verification remains a largely untapped resource for ensuring the reliability of cloud-scale distributed systems. 
+While model checking has found its way into practical engineering workflows [[3]], formal verification remains a largely untapped resource for ensuring the reliability of cloud-scale distributed systems. 
 
 In this article, we advocate for a pragmatic approach to formal verification, emphasizing its value as a complement to model checking. Our thesis is straightforward: as AI-assisted programming becomes ubiquitous, the ability to rigorously reason about system correctness will be a key differentiator. Practical formal verification, we argue, could be the missing piece that takes the robustness of cloud-scale distributed systems to the next level.
 
@@ -38,19 +38,19 @@ Formal methods can be visualized across four quadrants in a two-dimensional spac
 
 - Model checking on real implementation (top-right quadrant):
 
-Example: Take Coyote [[2]], originally developed at Microsoft Research and now open-sourced. In traditional testing, executing a test case 100 times yields roughly identical results each time. With Coyote, each execution explores different task interleavings, thanks to its control over asynchronous task scheduling. As a result, invariant violations surface more quickly, and when detected, Coyote captures a trace, allowing for deterministic replay and debugging.
+Example: Take Coyote [[4]], originally developed at Microsoft Research and now open-sourced. In traditional testing, executing a test case 100 times yields roughly identical results each time. With Coyote, each execution explores different task interleavings, thanks to its control over asynchronous task scheduling. As a result, invariant violations surface more quickly, and when detected, Coyote captures a trace, allowing for deterministic replay and debugging.
 
 - Model checking on abstract specification (top-left quadrant):
 
-Example: Consider TLA+ [[1]], a specification language. Real-world systems contain myriad details, many of which are non-essential to verifying correctness. By abstracting core logic and eliminating extraneous details, specifications in TLA+ focus solely on crucial behaviors. Model checking these specifications explores all defined interleavings, capturing and replaying traces whenever an invariant is violated.
+Example: Consider TLA+ [[2]], a specification language. Real-world systems contain myriad details, many of which are non-essential to verifying correctness. By abstracting core logic and eliminating extraneous details, specifications in TLA+ focus solely on crucial behaviors. Model checking these specifications explores all defined interleavings, capturing and replaying traces whenever an invariant is violated.
 
 - Formal verification on abstract specification (bottom-feft quadrant):
 
-Example: Instead of verifying through exhaustive exploration, formal verification offers mathematical proof of correctness. For instance, using the IVy language [[3]], one can abstract essential distributed system logic, write specifications, and then mathematically prove their correctness using the IVy toolchain.
+Example: Instead of verifying through exhaustive exploration, formal verification offers mathematical proof of correctness. For instance, using the IVy language [[5]], one can abstract essential distributed system logic, write specifications, and then mathematically prove their correctness using the IVy toolchain.
 
 - Formal verification on real implementation (bottom-right quadrant):
 
-Example: Verus [[4]] is a pioneering open-source project marrying formal verification with real-world implementation in the Rust language. It exemplifies the potential of integrating rigorous mathematical proofs with tangible, working code.
+Example: Verus [[6]] is a pioneering open-source project marrying formal verification with real-world implementation in the Rust language. It exemplifies the potential of integrating rigorous mathematical proofs with tangible, working code.
 
 ## Formal verification: a practical perspective
 
@@ -66,7 +66,7 @@ To distill our perspective on practical formal verification: It's about pinpoint
 
 ## IVy
 
-This is where IVy [[3]] comes in. IVy offers both a language for specifying distributed protocols and a toolkit for formal verification. For those who have worked with TLA+, transitioning to IVy is relatively straightforward.
+This is where IVy [[5]] comes in. IVy offers both a language for specifying distributed protocols and a toolkit for formal verification. For those who have worked with TLA+, transitioning to IVy is relatively straightforward.
 
 Using IVy is an interactive experience. It starts with specifying a distributed protocol. With a target safety property, you ask IVy to verify it. Since most safety properties aren't automatically inductive invariants, IVy often rejects the proof and provides counterexamples. These show scenarios where a legitimate state leads to a violation of the safety property after a valid action. This feedback helps users recognize missing base invariants.
 
@@ -76,7 +76,7 @@ From an engineering viewpoint, this iterative method is useful. Each cycle deepe
 
 ### Why not Dafny?
 
-Dafny [[5]] has garnered attention as a tool for the formal verification of distributed protocols. However, based on our experiences, Dafny falls short in serving the specific needs of practical formal verification. A key limitation lies in Dafny's inability to consistently generate concise and easily understandable counterexamples, a crucial aspect in the journey of identifying inductive invariants.
+Dafny [[7]] has garnered attention as a tool for the formal verification of distributed protocols. However, based on our experiences, Dafny falls short in serving the specific needs of practical formal verification. A key limitation lies in Dafny's inability to consistently generate concise and easily understandable counterexamples, a crucial aspect in the journey of identifying inductive invariants.
 
 ## Toy consensus example
 
@@ -181,16 +181,18 @@ Also, keep in mind that extending the specification can significantly increase t
 
 ## Conclusion
 
-In an imminent future, where AI-assisted programming takes center stage [[0]], the capability to reason and ascertain high-level system correctness will stand out as a pivotal differentiating skill. For those of us crafting the foundational layers of cloud-scale distributed infrastructure, it's imperative to not only familiarize ourselves with tools like TLA+ but to also become adept at practical formal verification. It isn't just about knowing the tools — it's about seamlessly integrating them into our everyday workflow, ensuring that the systems we build are robust and fail-proof.
+In an imminent future, where AI-assisted programming takes center stage [[1]], the capability to reason and ascertain high-level system correctness will stand out as a pivotal differentiating skill. For those of us crafting the foundational layers of cloud-scale distributed infrastructure, it's imperative to not only familiarize ourselves with tools like TLA+ but to also become adept at practical formal verification. It isn't just about knowing the tools — it's about seamlessly integrating them into our everyday workflow, ensuring that the systems we build are robust and fail-proof.
 
-[0]: https://zfhuang99.github.io/rust/chatgpt/2023/03/14/implementing-Paxos-in-Rust-with-ChatGPT.html#future-of-ai-assisted-programming
+[1]: https://zfhuang99.github.io/rust/chatgpt/2023/03/14/implementing-Paxos-in-Rust-with-ChatGPT.html#future-of-ai-assisted-programming
 
-[1]: https://lamport.azurewebsites.net/tla/tla.html
+[2]: https://lamport.azurewebsites.net/tla/tla.html
 
-[2]: https://microsoft.github.io/coyote/
+[3]: https://lamport.azurewebsites.net/tla/industrial-use.html
 
-[3]: https://kenmcmil.github.io/ivy/
+[4]: https://microsoft.github.io/coyote/
 
-[4]: https://github.com/verus-lang/verus
+[5]: https://kenmcmil.github.io/ivy/
 
-[5]: https://dafny.org/dafny/
+[6]: https://github.com/verus-lang/verus
+
+[7]: https://dafny.org/dafny/
