@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Practical Formal Verification
+title:  Practical Formal Verification for Distributed Systems
 categories: [Formal verification, IVy]
 ---
 
