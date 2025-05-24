@@ -4,7 +4,7 @@ title:  The Coming AI Revolution in Distributed Systems
 categories: [GitHub Copilot, Formal verification, TLA+]
 ---
 
-Formal verification is widely recognized for uncovering subtle, elusive bugs early in distributed system design [[1]]. AI significantly accelerates this verification process [[2]], but recent advancements suggest an even more transformative potential: AI can now autonomously generate accurate formal specifications directly from large-scale production codebases. This breakthrough points toward a future where AI-driven correctness verification becomes standard practice, potentially surpassing human capabilities.
+Formal verification is widely recognized for uncovering subtle, elusive bugs early in distributed system design [[1]]. AI significantly accelerates this verification process [[2]], but recent advancements suggest an even more transformative potential: AI can now autonomously generate accurate formal specifications directly from large-scale production codebases. This breakthrough points toward a future where AI-driven correctness verification becomes standard practice, potentially surpassing human capabilities [^disclaimer].
 
 ## Recap: AI-Driven Bug Discovery
 
@@ -61,3 +61,5 @@ We’re not yet at the finish line, but even if AI stopped advancing today, the 
 [1]: https://lamport.azurewebsites.net/tla/industrial-use.html
 
 [2]: https://zfhuang99.github.io/tla+/pluscal/chatgpt/2023/09/24/TLA-made-simple-with-chatgpt.html
+
+[^disclaimer]: Opinions are personal.
