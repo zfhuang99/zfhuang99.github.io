@@ -23,7 +23,7 @@ We began by instructing AI to formulate a detailed, step-by-step plan for analyz
 
 **1. Autonomous Source Code Analysis and Initial Specification**
 
-With minimal input—just the feature name and directory—AI autonomously identified relevant code, extracted necessary details, created architecture and behavior documentation, and generated an initial TLA+ specification with over 10 invariants. Writing TLA+ specifications involves careful abstraction and simplification; AI adeptly handled this, effectively balancing detail and abstraction.
+With minimal input — just the feature name and directory — AI autonomously identified relevant code, extracted necessary details, created architecture and behavior documentation, and generated an initial TLA+ specification with over 10 invariants. Writing TLA+ specifications involves careful abstraction and simplification; AI adeptly handled this, effectively balancing detail and abstraction.
 
 **2. Refining the Specification**
 
@@ -43,7 +43,7 @@ Within just a few hours of interactive refinement, AI surfaced a rare but critic
 
 ## A Bold Prediction
 
-Considering the sophistication of the AI-generated TLA+ specification—and speaking as someone with over a decade of experience manually crafting such specifications—I must acknowledge that the AI-produced version rivals human-crafted work. This realization underscores a profound insight: all essential components to fully automate correctness verification in distributed systems are now within reach.
+Considering the sophistication of the AI-generated TLA+ specification — and speaking as someone with over a decade of experience manually crafting such specifications — I must acknowledge that the AI-produced version rivals human-crafted work. This realization underscores a profound insight: all essential components to fully automate correctness verification in distributed systems are now within reach.
 
 I have a bold prediction for what’s about to unfold:
 
@@ -54,7 +54,7 @@ I have a bold prediction for what’s about to unfold:
   * Genuine bugs will be automatically corrected by AI.
   * Discrepancies between models and implementations will drive continuous AI-driven specification refinement.
 * Iterative AI-driven loops will generate extensive datasets, ideal for reinforcement learning, continuously enhancing AI capabilities.
-* As with any domain featuring clear, verifiable outcomes, correctness in distributed systems will inevitably be mastered by AI, ultimately rendering correctness issues obsolete.
+* As with any domain featuring clear, verifiable outcomes, correctness in distributed systems will inevitably be mastered by AI, significantly reducing the frequency and impact of correctness issues.
 
 We’re not yet at the finish line, but even if AI stopped advancing today, the roadmap toward an AI-driven correctness revolution is already clearly visible.
 
