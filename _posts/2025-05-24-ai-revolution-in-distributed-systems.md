@@ -8,7 +8,7 @@ Formal verification is widely recognized for uncovering subtle, elusive bugs ear
 
 ## Recap: AI-Driven Bug Discovery
 
-Our recent experience with GitHub Copilot Agent demonstrates AI’s ability to autonomously produce precise TLA+ specifications from Azure Storage's production source code. Remarkably, this AI-generated specification uncovered a subtle race condition previously missed by traditional code inspections and rigorous testing, highlighting AI's transformative potential in ensuring correctness in distributed systems.
+Our recent experience with GitHub Copilot Agent demonstrates AI’s ability to autonomously produce precise TLA+ specifications from Azure Storage's production source code. Remarkably, this AI-generated specification surfaced a subtle race condition previously missed by traditional code inspections and rigorous testing, highlighting AI's transformative potential in ensuring correctness in distributed systems.
 
 ### Crafting a Plan
 
@@ -23,27 +23,31 @@ We began by instructing AI to formulate a detailed, step-by-step plan for analyz
 
 **1. Autonomous Source Code Analysis and Initial Specification**
 
-With minimal input — just the feature name and directory — AI autonomously identified relevant code, extracted necessary details, created architecture and behavior documentation, and generated an initial TLA+ specification with over 10 invariants. Writing TLA+ specifications involves careful abstraction and simplification; AI adeptly handled this, effectively balancing detail and abstraction.
+  - After reviewing the AI-generated plan, we instructed AI to execute each step, marking completion as it progressed. Notably, we only provided the feature name and the relevant component directory to narrow the search scope. AI autonomously identified pertinent files and extracted essential information without further guidance.
+  
+  - Subsequently, AI produced comprehensive architecture and behavior documentation, along with an initial TLA+ specification containing over 10 invariants. Impressively, the primary safety invariant matched precisely what we anticipated.
 
-**2. Refining the Specification**
+**2. Iterative Refinement of the Specification**
 
-When prompted to include a previously missed safety mechanism (optimistic concurrency control), AI re-analyzed the source code, updated documentation, and iteratively refined the TLA+ specification.
+  - Upon reviewing the initial specification, we noticed the absence of an etag-based optimistic concurrency control mechanism. We prompted AI to investigate how etags were utilized to prevent race conditions. In response, AI revisited the source code, updated the documentation accordingly, and refined the TLA+ specification to incorporate this critical mechanism.
+
+  - We observed that AI refined the specification iteratively, updating one atomic action at a time. This incremental approach likely helped AI maintain precision and accuracy throughout the refinement process.
 
 **3. Validation through Model Checking**
 
-AI swiftly corrected an initial specification error identified by TLA+ model checking. Subsequent model checking revealed a critical violation of the primary safety invariant, with AI pinpointing the exact problematic sequence involving concurrent deletion and reference addition.
+  - With the refined specification ready, we proceeded to validate it using the TLA+ model checker. Initially, the tool reported a language error, which AI swiftly corrected. Subsequent model checking uncovered a violation of the primary safety invariant. After providing the violation trace to AI, it quickly identified the problematic sequence — a concurrent deletion and reference addition scenario.
 
-**4. Enhancing via Git History Analysis**
+**4. Enhancing the Specification via Git History Analysis**
 
-AI leveraged git MCP to analyze commit history, uncovering another missed critical safety mechanism (pessimistic locking). It promptly incorporated this knowledge into the specification and documentation.
+  - To ensure comprehensive coverage, we asked AI to analyze the git commit history for the feature using git MCP. This analysis revealed an additional critical safety mechanism involving pessimistic locking, previously overlooked. AI promptly updated both the documentation and the TLA+ specification to reflect this important discovery.
 
 ### Identifying the Race Condition
 
-Within just a few hours of interactive refinement, AI surfaced a rare but critical race condition occurring when an old Paxos primary performed a deletion concurrently with a new primary adding a reference.
+Within just a few hours of iterative refinement, AI surfaced a subtle yet critical race condition: an old Paxos primary could perform a deletion concurrently with a new primary adding a reference. This issue had previously eluded thorough design reviews, code inspections, and extensive testing. Given the scale and complexity of Azure Storage, however, it is highly likely this race condition would have eventually manifested in a production environment.
 
 ## A Bold Prediction
 
-Considering the sophistication of the AI-generated TLA+ specification — and speaking as someone with over a decade of experience manually crafting such specifications — I must acknowledge that the AI-produced version rivals human-crafted work. This realization underscores a profound insight: all essential components to fully automate correctness verification in distributed systems are now within reach.
+Considering the sophistication of the AI-generated TLA+ specification — and drawing from over a decade of experience manually crafting such specifications — I must acknowledge that the AI-produced version rivals human-crafted work. This observation highlights a significant milestone: the essential building blocks for fully automating correctness verification in distributed systems are now within reach.
 
 I have a bold prediction for what’s about to unfold:
 
