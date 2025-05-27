@@ -8,11 +8,11 @@ Formal verification has long been the gold standard for uncovering subtle bugs i
 
 ## AI Discovers Hidden Bugs
 
-Our recent work with GitHub Copilot Agent demonstrates this potential in action. The AI autonomously produced precise TLA+ specifications from Azure Storage's production source code, uncovering a subtle race condition that had evaded traditional code reviews and extensive testing. This achievement illustrates how AI can transform our approach to ensuring correctness in complex distributed systems.
+Our recent work with GitHub Copilot demonstrates this potential in action. The AI autonomously produced precise TLA+ specifications from Azure Storage's production source code, uncovering a subtle race condition that had evaded traditional code reviews and extensive testing. This achievement illustrates how AI can transform our approach to ensuring correctness in complex distributed systems.
 
 ### Strategic Planning: AI's Methodical Approach
 
-We began by tasking the AI with formulating a comprehensive plan for analyzing a specific feature and generating a corresponding TLA+ specification. The AI responded with an 8-step methodology that demonstrated deep understanding of formal verification principles:
+We began by tasking GitHub Copilot (with o3 model) to formulate a comprehensive plan for analyzing a specific feature and generating a corresponding TLA+ specification. The AI responded with an 8-step methodology that demonstrated deep understanding of formal verification principles:
 
 * Systematic cataloging of code paths, data structures, and Paxos/server commands
 * Extraction of behavioral patterns and invariants from source code
@@ -23,7 +23,7 @@ We began by tasking the AI with formulating a comprehensive plan for analyzing a
 
 **1. Autonomous Code Analysis and Initial Specification**
 
-  - After reviewing the AI-generated plan, we instructed the AI to execute each step, marking completion as it progressed. Notably, we only provided the feature name and the relevant component directory to narrow the search scope. The AI autonomously identified pertinent files and extracted essential information without further guidance.
+  - After reviewing the AI-generated plan, we instructed GitHub Copilot Agent (with Claude 3.7 Sonnet model) to execute each step, marking completion as it progressed. Notably, we only provided the feature name and the relevant component directory to narrow the search scope. The AI autonomously identified pertinent files and extracted essential information without further guidance.
   
   - Subsequently, the AI produced comprehensive architecture and behavior documentation, along with an initial TLA+ specification containing over 10 invariants. Impressively, the primary safety invariant matched precisely what we anticipated.
 
