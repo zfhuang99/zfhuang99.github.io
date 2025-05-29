@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  AI Discovers Hidden Distributed System Bugs
+title:  The Coming AI Revolution in Distributed Systems
 categories: [GitHub Copilot, Formal verification, TLA+]
 ---
 
-Formal verification has long been the gold standard for uncovering subtle bugs in distributed system design [[1]]. While AI has already proven its ability to accelerate verification processes [[2]], recent breakthroughs suggest a far more transformative potential: AI can now autonomously generate accurate formal specifications directly from production codebases. This capability marks a pivotal moment in software engineering, pointing toward a future where AI-driven correctness verification becomes not just standard practice, but potentially superior to human efforts [^disclaimer].
+Formal verification has long been the gold standard for uncovering subtle bugs in distributed system design [[1]]. While AI has already proven its ability to accelerate verification processes [[2]], recent breakthroughs suggest a far more transformative potential: AI can now autonomously generate accurate formal specifications directly from very large production codebases. This capability marks a pivotal moment in software engineering, pointing toward a future where AI-driven correctness verification becomes not just standard practice, but potentially superior to human efforts [^disclaimer].
 
-## AI Discovers Hidden Bugs
+## AI-driven Bug Discovery
 
 Our recent work with GitHub Copilot demonstrates this potential in action. The AI autonomously produced precise TLA+ specifications from Azure Storage's production source code, uncovering a subtle race condition that had evaded traditional code reviews and extensive testing. This achievement illustrates how AI can transform our approach to ensuring correctness in complex distributed systems.
 
