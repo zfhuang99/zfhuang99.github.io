@@ -4,18 +4,11 @@ title:  Lamport Agent - AI-assisted Formal Specification
 categories: [GitHub Copilot, Formal verification, TLA+]
 ---
 
-In the previous blog post [[1]], I discussed how large language models (LLMs)
-are now capable of producing precise formal specifications directly from
-large production codebases and identifying nuanced race conditions. This
-process can be largely automated, making it broadly applicable.
-Accordingly, we have developed an agent-based workflow that others can
-utilize with their own codebases. The following is an example
-demonstrating this workflow using DeepSeek's open-source distributed
-file system, 3FS.
+In the previous blog post [[1]], I discussed how large language models (LLMs) are now capable of producing precise formal specifications directly from large production codebases and identifying nuanced race conditions. This process can be largely automated, making it broadly applicable. Accordingly, we have developed Lamport Agent so that others can utilize with their own codebases. The following is an example demonstrating this agent using DeepSeek’s open-source distributed file system, 3FS [[2]]. The complete GitHub Copilot chat history and all the artifacts produced by the agent are available here [[3]].
 
 ## CRAQ in DeepSeek 3FS
 
-3FS implements an optimized chain replication protocol, called CRAQ [[2]]. We
+3FS implements an optimized chain replication protocol, called CRAQ [[4]]. We
 aim to model this system and check its consistency.
 
 The charts compare standard chain replication with CRAQ. In standard
@@ -108,6 +101,8 @@ additional effort.
 
 [1]: https://zfhuang99.github.io/github%20copilot/formal%20verification/tla+/2025/05/24/ai-revolution-in-distributed-systems.html
 
-[2]: https://www.usenix.org/legacy/event/usenix09/tech/full_papers/terrace/terrace.pdf
+[2]: https://github.com/deepseek-ai/3FS
 
 [3]: https://github.com/zfhuang99/lamport-agent
+
+[4]: https://www.usenix.org/legacy/event/usenix09/tech/full_papers/terrace/terrace.pdf
