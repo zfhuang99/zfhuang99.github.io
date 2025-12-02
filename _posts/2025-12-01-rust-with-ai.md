@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 100K Lines of Rust with AI
+title: Learnings from 100K Lines of Rust with AI
 categories: [Rust, Claude Code, Codex, Contracts, Spec-Driven Development]
 ---
 
@@ -10,7 +10,7 @@ pre code { white-space: pre-wrap; word-break: break-word; }
 
 In the past few months, I've been stress-testing how far AI coding agents can take us when building real, production-grade distributed systems.
 
-The result: a Rust-based multi-Paxos consensus engine that not only implements all the features of Azure's **Replicated State Library (RSL)** [[1]] — which underpins most major Azure services — but also modernizes it for today's hardware.
+The result: a Rust-based multi-Paxos consensus engine that not only implements all the features of Azure's Replicated State Library (RSL) [[1]] — which underpins most major Azure services — but also modernizes it for today's hardware.
 
 The entire project took me ~3 months, with 100K lines of Rust code written in ~4 weeks and performance optimization from 23K operations/sec to 300K ops/sec achieved in ~3 weeks.
 
@@ -46,15 +46,15 @@ When Codex CLI arrived, I added a second ChatGPT Plus subscription to handle rat
 
 The question I get most often is: *How can AI possibly implement something as complex as Paxos correctly?*
 
-Testing is the first layer of defense. My system now includes **1,300+ tests** — from unit tests to minimal integration tests (e.g., proposer + acceptor only), all the way to multi-replica full integration tests with injected failures. See the [project status](#appendix-project-stats).
+Testing is the first layer of defense. My system now includes 1,300+ tests — from unit tests to minimal integration tests (e.g., proposer + acceptor only), all the way to multi-replica full integration tests with injected failures. See the [project status](#appendix-project-stats).
 
-But the real breakthrough came from **AI-driven code contracts**.
+But the real breakthrough came from AI-driven **code contracts**.
 
 Code contracts specify *preconditions*, *postconditions*, and *invariants* for critical functions. These contracts are converted into runtime asserts during testing but can be disabled in production builds for performance. While I started using this approach long ago with .NET [[2]], AI has made contracts vastly more powerful.
 
 Here's how I apply them at three levels:
 
-**1. Ask AI to write contracts.** Opus 4.1 writes good contracts, but GPT-5 writes excellent ones. I focus on reviewing and refining. For example, the `process_2a` method (handling phase 2a messages in Paxos) has **16 contracts**, including this one:
+**1. Ask AI to write contracts.** Opus 4.1 writes good contracts, but GPT-5 High writes excellent ones. I focus on reviewing and refining. For example, the `process_2a` method (handling phase 2a messages in Paxos) has **16 contracts**, including this one:
 
 <p align="center">
   <img src="/assets/images/rsml/contract_7_new.png" width="100%">
@@ -139,7 +139,7 @@ Reflecting on my journey, I keep wondering where AI could deliver even more valu
 
 The seed of the project is an elegant design markdown authored by Jay Lorch [[4]] from Microsoft Research. This design greatly simplifies all the components in multi-Paxos, making it easier to implement and reason about.
 
-So far, 2 out of the 3 RSL limitations have been addressed: pipelining and NVM support (Jay integrated the fully verified log which was published in the ``PoWER Never Corrupts`` paper [[5]] at OSDI 2025). The RDMA support is still TBD.
+So far, 2 out of the 3 RSL limitations have been addressed: pipelining and NVM support (Jay integrated the fully verified persistence log for NVM which was published in the ``PoWER Never Corrupts`` paper [[5]] at OSDI 2025). The RDMA support is still TBD.
 
 To date, the project has grown to over **130K lines of Rust code**, with **1,300+ tests** accounting for more than **65%** of the codebase.
 
