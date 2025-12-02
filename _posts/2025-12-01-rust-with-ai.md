@@ -74,7 +74,7 @@ That single contract saved what could have been a serious replication consistenc
 
 ## Lightweight Spec-Driven Development
 
-I've tried various Spec-Driven Development (SDD) tools. In fact, the earlier components (such as leader election, proposer, acceptor, and learner) were all implemented following a rigid SDD approach. I would start with a requirements markdown, turn it into a design markdown, and then a markdown task list. However, I gradually found this process too rigid; making changes along the way and ensuring all documents remained consistent became a headache.
+I've tried various Spec-Driven Development (SDD) tools. In fact, the earlier components (such as leader election, proposer, acceptor, and learner) were all implemented following a rigid SDD approach. I would start with a requirement markdown, turn it into a design markdown, and then a task list markdown. However, I gradually found this process too rigid; making changes along the way and ensuring all documents remained consistent became a headache.
 
 I've now switched to a more lightweight approach. When I work on a feature (e.g., snapshotting), I use `/specify` from **spec kit** [[3]] to generate a spec markdown. This spec consists of a few user stories and acceptance criteria.
 
