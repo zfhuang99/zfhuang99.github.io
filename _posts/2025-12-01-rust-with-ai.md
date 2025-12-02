@@ -26,7 +26,7 @@ There are three key gaps motivated this project:
 2. **No NVM support:** Non-volatile memory is now common in Azure datacenters and can drastically reduce commit time.
 3. **Limited hardware awareness:** RSL wasn't built to leverage RDMA, which is now pervasive in Azure data centers.
 
-AddreRemoving ssing these limitations could unlock significantly lower latency and higher throughput — critical for modern cloud workloads and AI-driven services.
+Removing these limitations could unlock significantly lower latency and higher throughput — critical for modern cloud workloads and AI-driven services.
 
 Given my interest in Rust and AI-accelerated development, I set out to build a modern RSL equivalent from scratch.
 
@@ -76,7 +76,7 @@ That single contract saved what could have been a serious replication consistenc
 
 I've tried various Spec-Driven Development (SDD) tools. In fact, the earlier components (such as leader election, proposer, acceptor, and learner) were all implemented following a rigid SDD approach. I would start with a requirements markdown, turn it into a design markdown, and then a markdown task list. However, I gradually found this process too rigid; making changes along the way and ensuring all documents remained consistent became a headache.
 
-I've now switched to a more lightweight approach. When I work on a feature (e.g., snapshotting), I use `/specify` from **spec skit** [[3]] to generate a spec markdown. This spec consists of a few user stories and acceptance criteria.
+I've now switched to a more lightweight approach. When I work on a feature (e.g., snapshotting), I use `/specify` from **spec kit** [[3]] to generate a spec markdown. This spec consists of a few user stories and acceptance criteria.
 
 Here is an example user story for snapshotting:
 
